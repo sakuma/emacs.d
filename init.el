@@ -1095,10 +1095,11 @@ and source-file directory for your debugger." t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; 矩形選択  ---  http://www.cua.dk/cua.el
-;; 
-(require 'cua-mode)
-(setq cua-enable-cua-keys nil)
-(cua-mode t)
+;;
+;; 23.1 に同梱
+;; (require 'cua-mode)
+;; (setq cua-enable-cua-keys nil)
+;; (cua-mode t)
 ;; (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
 ;; (transient-mark-mode 1) ;; No region when it is not highlighted
 ;; (setq cua-keep-region-after-copy t) ;; Standard Windows behaviour
