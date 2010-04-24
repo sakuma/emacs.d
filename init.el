@@ -988,7 +988,6 @@ and source-file directory for your debugger." t)
 
 (set-file-name-coding-system 'utf-8)
 
-(prefer-coding-system 'utf-8)
 
 ;; 日本語infoの文字化け防止
 (auto-compression-mode t)
