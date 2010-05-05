@@ -113,10 +113,9 @@
 ;; http://github.com/technomancy/clojure-mode
 
 ;; (add-to-list 'load-path "~/.emacs.d/site-lisp/clojure-mode")
-;; (add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
 (require 'clojure-mode)
-
-;;; (autoload 'clojure-mode "clojure-mode" "A major mode for Clojure" t)
+(add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
+(autoload 'clojure-mode "clojure-mode" "A major mode for Clojure" t)
 ;;(setq clojure-src-root (expand-file-name "~/.emacs.d/clojure"))
 
 ;;(clojure-slime-config)
@@ -168,18 +167,19 @@
 ;;                          load-path))
 
 
-(add-to-list 'load-path "/opt/local/share/emacs/site-lisp/slime")
-(add-to-list 'load-path "/opt/local/share/emacs/site-lisp/slime/contrib")
+;; (add-to-list 'load-path "/opt/local/share/emacs/site-lisp/slime")
+;; (add-to-list 'load-path "/opt/local/share/emacs/site-lisp/slime/contrib")
 
 ;;;  ------------------------------
-(setq slime-lisp-implementations
-      `((sbcl ("/opt/local/bin/sbcl") :coding-system utf-8-unix)
-        (clisp ("/opt/local/bin/clisp") :coding-system utf-8-unix)
-        (abcl ("/opt/local/bin/abcl") :coding-system utf-8-unix)
-				(clojure ("/opt/local/bin/clj"))
-				))
+;; (setq slime-lisp-implementations
+;;       `(
+;; 				(clojure ("/opt/local/bin/clj"))
+;; 				(sbcl ("/opt/local/bin/sbcl") :coding-system utf-8-unix)
+;;         (clisp ("/opt/local/bin/clisp") :coding-system utf-8-unix)
+;;         (abcl ("/opt/local/bin/abcl") :coding-system utf-8-unix)
+;; 				))
 
-				;; (clojure ("/opt/local/bin/clj"))
+;; (clojure ("/opt/local/bin/clj"))
 
 
 ;; (setq swank-clojure-jar-path "~/code/shcloj-code/lib/clojure.jar"
@@ -216,21 +216,42 @@
 ;;              (cond ((not (featurep 'slime))
 ;;                     (require 'slime) 
 ;;                     (normal-mode)))))
-(require 'slime-autoloads)
+;; (require 'slime-autoloads)
 
-(eval-after-load "slime"
-  ;; '(slime-setup '(slime-scratch slime-editing-commands)))
-	'(slime-setup '(slime-repl
-									slime-fancy
-									slime-banner
-                  slime-autodoc
-                  ;; Bad - slime-highlight-edits
-                  ;slime-mrepl
-                  ;inferior-slime-mode
-                  )))
+;; (eval-after-load "slime"
+;;   ;; '(slime-setup '(slime-scratch slime-editing-commands)))
+;; 	'(slime-setup '(slime-repl
+;; 									slime-fancy
+;; 									slime-banner
+;;                   slime-autodoc
+;;                   ;; Bad - slime-highlight-edits
+;;                   ;slime-mrepl
+;;                   ;inferior-slime-mode
+;;                   )))
 
 ;; (eval-after-load "slime"
 ;;   '(progn (slime-setup '(slime-repl slime-fuzzy slime-c-p-c)))) 
+
+
+
+;;======================================================================
+;; clojure HP
+
+;; swank-clojure
+;; (add-to-list 'load-path "~/opt/swank-clojure/src/emacs")
+
+(setq swank-clojure-jar-path "~/.clojure/clojure.jar"
+      swank-clojure-extra-classpaths (list
+																			;;"~/opt/swank-clojure/src/main/clojure"
+																			"~/.clojure/clojure-contrib.jar"))
+;;(require 'swank-clojure-autoload)
+
+;; slime
+(eval-after-load "slime" 
+  '(progn (slime-setup '(slime-repl))))
+
+(require 'slime)
+(slime-setup) 
 
 
 ;;======================================================================
@@ -368,7 +389,7 @@ and source-file directory for your debugger." t)
 
 
 ;; rrb - Ruby Refactoring Browser
-(load "rrb")
+;; (load "rrb")
 
 ;; もしくは
 ;;  M-x load-library[RET]rrb[RET]
@@ -667,8 +688,8 @@ and source-file directory for your debugger." t)
 ;; edit-server-new-frame-menu-bar - Show the emacs frame’s menu-bar if set to t; hide if nil
 ;; edit-server-new-frame-mode-line - Show the emacs frame’s mode-line if set to t; hide if nil
 
-(require 'edit-server)
-(edit-server-start)
+;; (require 'edit-server)
+;; (edit-server-start)
 
 ;; (if (and (daemonp) (locate-library "edit-server"))
 ;;     (progn
@@ -737,7 +758,9 @@ and source-file directory for your debugger." t)
   '(ecb-options-version "2.40")
  ;; '(gud-gdb-command-name "gdb --annotate=1")
   '(inhibit-startup-screen t)
-
+	;;'(clojure-inferior-lisp-program "/opt/local/share/java/clojure-contrib/launchers/bash/clj-env-dir"))
+	;; clojure
+	
  ;; '(large-file-warning-threshold nil)
  )
 (custom-set-faces
@@ -1079,8 +1102,12 @@ and source-file directory for your debugger." t)
 ;; 削除ファイルをごみ箱に入れる
 (setq delete-by-moving-to-trash t)
 
+;;; 補完
 ;; C-x b で候補を絞り込む
 (iswitchb-mode 1)
+;; (partial-completion-mode 1)
+
+;; (mcomplete-mode 1)
 
 ;; 最近開いたファイルを開く
 (setq recentf-auto-cleanup 'never)
@@ -1275,7 +1302,7 @@ and source-file directory for your debugger." t)
 
 (require 'highlight-symbol)
 
-;;(setq-default highlight-symbol-mode t)
+(setq-default highlight-symbol-mode t)
 
 ;; (global-set-key [(control f3)] 'highlight-symbol-at-point)
 (global-set-key [f3] 'highlight-symbol-next)
