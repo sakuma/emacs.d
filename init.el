@@ -666,13 +666,18 @@ and source-file directory for your debugger." t)
 
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;
+;;;       Zencoding-mode   --- HTML,CSS 
+;;
+;; git://github.com/chrisdone/zencoding.git
 
+(require 'zencoding-mode)
 
-
-
-
-
-
+(add-hook 'html-mode-hook 'zencoding-mode)
+(add-hook 'nxhtml-mode-hook 'zencoding-mode)
+(add-hook 'text-mode-hook 'zencoding-mode)
+(add-hook 'sgml-mode-hook 'zencoding-mode)
 
 
 ;;;; Chrome Extention
