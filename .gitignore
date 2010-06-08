@@ -1,2 +1,4 @@
 .recentf
 auto-save-list/*
+site-lisp/*
+tmp/
