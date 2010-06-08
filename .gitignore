@@ -1,4 +1,6 @@
 .recentf
-auto-save-list/*
-site-lisp/*
+auto-save-list/
+site-lisp/
 tmp/
+lib/
+!lib/orig
