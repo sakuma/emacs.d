@@ -725,7 +725,7 @@ and source-file directory for your debugger." t)
 ;; ECB
 ;; (add-to-list 'load-path "~/.emacs.d/site-lisp/ecb-2.40")
 ;; CEDET
-(load-file "~/.emacs.d/site-lisp/cedet-1.0pre7/common/cedet.elc")
+;; (load-file "~/.emacs.d/site-lisp/cedet-1.0pre7/common/cedet.elc")
 ;;(setq semantic-load-turn-useful-things-on t)
 
 (require 'ecb)
@@ -1121,6 +1121,10 @@ and source-file directory for your debugger." t)
 (global-set-key "\C-xf" 'recentf-open-files)
 
 
+(require 'parenthesis)
+;; (define-key map (kbd "\"") 'insert-pair)
+;; (define-key map (kbd "\[") 'insert-pair)
+;; (define-key map (kbd "\{") 'insert-pair))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
