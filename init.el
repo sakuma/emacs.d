@@ -460,6 +460,16 @@ and source-file directory for your debugger." t)
     (lambda () (rinari-launch)))
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;
+;;;;
+;;
+;; untabify-file.el
+;; http://www.koders.com/lisp/fidB815221322CBDE55053CAD09D39E74418FE58B78.aspx?s=%22ruby+on+rails%22#L7
+;;
+(require 'untabify-file)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;
 ;;;;;;          flymake for ruby
