@@ -4,3 +4,4 @@ site-lisp/
 tmp/
 lib/
 !lib/orig
+tramp
