@@ -624,6 +624,24 @@ and source-file directory for your debugger." t)
 
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;
+;;   Javascript - j2-mode
+;; http://code.google.com/p/js2-mode
+;;
+;; Installation:
+;;
+;;  - put `js2.el' somewhere in your emacs load path
+;;  - M-x byte-compile-file RET <path-to-js2.el> RET
+;;    Note:  it will refuse to run unless byte-compiled
+;;  - add these lines to your .emacs file:
+;;    (autoload 'js2-mode "js2" nil t)
+;;    (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
+(autoload 'js2-mode "js2" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
+
 
 
 
