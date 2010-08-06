@@ -830,6 +830,14 @@ and source-file directory for your debugger." t)
 ;;(setq system-uses-terminfo nil)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;
+;; uniquify
+;; http://www.ysbl.york.ac.uk/~emsley/software/stuff/uniquify.el
+
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;
 ;;;      occur, multi-occur
