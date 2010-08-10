@@ -21,7 +21,7 @@
                 ;; "~/.emacs.d/site-lisp"              ;; main
                 ;; "~/.emacs.d/site-lisp/apel"
                 ;; "~/.emacs.d/site-lisp/emu"
-								;; "/opt/local/share/emacs/site-lisp"
+                ;; "/opt/local/share/emacs/site-lisp"
                 )
               load-path))
 
@@ -101,7 +101,7 @@
 ;;
 
 (autoload 'paredit-mode "paredit"
-	"Minor mode for pseudo-structurally editing Lisp code." t)
+  "Minor mode for pseudo-structurally editing Lisp code." t)
 
 
 
@@ -131,7 +131,7 @@
 ;; (swank-clojure-config
 ;; (setq swank-clojure-jar-home "/opt/local/share/java/clojure/lib/clojure.jar"
 ;;       swank-clojure-extra-classpath
-;; 			(list "/opt/local/share/java/clojure/lib/clojure-contrib.jar"))
+;;      (list "/opt/local/share/java/clojure/lib/clojure-contrib.jar"))
 ;; )
 
 
@@ -173,11 +173,11 @@
 ;;;  ------------------------------
 ;; (setq slime-lisp-implementations
 ;;       `(
-;; 				(clojure ("/opt/local/bin/clj"))
-;; 				(sbcl ("/opt/local/bin/sbcl") :coding-system utf-8-unix)
+;;        (clojure ("/opt/local/bin/clj"))
+;;        (sbcl ("/opt/local/bin/sbcl") :coding-system utf-8-unix)
 ;;         (clisp ("/opt/local/bin/clisp") :coding-system utf-8-unix)
 ;;         (abcl ("/opt/local/bin/abcl") :coding-system utf-8-unix)
-;; 				))
+;;        ))
 
 ;; (clojure ("/opt/local/bin/clj"))
 
@@ -202,11 +202,11 @@
 ;;                                       "~/code/shcloj-code/classes"))
 
 ;; (eval-after-load 'slime
-;; 	'(progn (require 'swank-clojure)
-;; 					(setq slime-lisp-implementations
-;; 								(cons `(clojure ,(swank-clojure-cmd) :init swank-clojure-init)
-;; 											(remove-if #'(lambda (x) (eq (car x) 'clojure))
-;; 																 slime-lisp-implementations)))))
+;;  '(progn (require 'swank-clojure)
+;;          (setq slime-lisp-implementations
+;;                (cons `(clojure ,(swank-clojure-cmd) :init swank-clojure-init)
+;;                      (remove-if #'(lambda (x) (eq (car x) 'clojure))
+;;                                 slime-lisp-implementations)))))
 
 
 ;;;  ------------------------------
@@ -214,15 +214,15 @@
 ;; (add-hook 'lisp-mode-hook
 ;;            (lambda ()
 ;;              (cond ((not (featurep 'slime))
-;;                     (require 'slime) 
+;;                     (require 'slime)
 ;;                     (normal-mode)))))
 ;; (require 'slime-autoloads)
 
 ;; (eval-after-load "slime"
 ;;   ;; '(slime-setup '(slime-scratch slime-editing-commands)))
-;; 	'(slime-setup '(slime-repl
-;; 									slime-fancy
-;; 									slime-banner
+;;  '(slime-setup '(slime-repl
+;;                  slime-fancy
+;;                  slime-banner
 ;;                   slime-autodoc
 ;;                   ;; Bad - slime-highlight-edits
 ;;                   ;slime-mrepl
@@ -230,7 +230,7 @@
 ;;                   )))
 
 ;; (eval-after-load "slime"
-;;   '(progn (slime-setup '(slime-repl slime-fuzzy slime-c-p-c)))) 
+;;   '(progn (slime-setup '(slime-repl slime-fuzzy slime-c-p-c))))
 
 
 
@@ -242,16 +242,16 @@
 
 (setq swank-clojure-jar-path "~/.clojure/clojure.jar"
       swank-clojure-extra-classpaths (list
-																			;;"~/opt/swank-clojure/src/main/clojure"
-																			"~/.clojure/clojure-contrib.jar"))
+                                      ;;"~/opt/swank-clojure/src/main/clojure"
+                                      "~/.clojure/clojure-contrib.jar"))
 ;;(require 'swank-clojure-autoload)
 
 ;; slime
-(eval-after-load "slime" 
+(eval-after-load "slime"
   '(progn (slime-setup '(slime-repl))))
 
 (require 'slime)
-(slime-setup) 
+(slime-setup)
 
 
 ;;======================================================================
@@ -552,17 +552,17 @@ and source-file directory for your debugger." t)
 (require 'rsense)
 ;; C-c .で補完
 (add-hook 'ruby-mode-hook
-					(lambda ()
-						(local-set-key (kbd "C-c .") 'ac-complete-rsense)))
+          (lambda ()
+            (local-set-key (kbd "C-c .") 'ac-complete-rsense)))
 
 (add-hook 'ruby-mode-hook
-					(lambda ()
-						(add-to-list 'ac-sources 'ac-source-rsense-method)
-						(add-to-list 'ac-sources 'ac-source-rsense-constant)))
+          (lambda ()
+            (add-to-list 'ac-sources 'ac-source-rsense-method)
+            (add-to-list 'ac-sources 'ac-source-rsense-constant)))
 
 ;; (add-hook 'ruby-mode-hook
-;; 					(lambda ()
-;; 						(local-set-key (kbd "C-c .") 'rsense-complete)))
+;;          (lambda ()
+;;            (local-set-key (kbd "C-c .") 'rsense-complete)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;
@@ -696,7 +696,7 @@ and source-file directory for your debugger." t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;
-;;;       Zencoding-mode   --- HTML,CSS 
+;;;       Zencoding-mode   --- HTML,CSS
 ;;
 ;; git://github.com/chrisdone/zencoding.git
 
@@ -717,7 +717,7 @@ and source-file directory for your debugger." t)
 ;; If not nil, edit each buffer in a new frame (and raise it)
 ;; (edit-server-new-frame nil)
 ;; Show the emacs frame’s minibuffer if set to t; hide if nil
-;; (edit-server-new-frame-minibuffer t) 
+;; (edit-server-new-frame-minibuffer t)
 ;; edit-server-new-frame-menu-bar - Show the emacs frame’s menu-bar if set to t; hide if nil
 ;; edit-server-new-frame-mode-line - Show the emacs frame’s mode-line if set to t; hide if nil
 
@@ -791,9 +791,9 @@ and source-file directory for your debugger." t)
   '(ecb-options-version "2.40")
  ;; '(gud-gdb-command-name "gdb --annotate=1")
   '(inhibit-startup-screen t)
-	;;'(clojure-inferior-lisp-program "/opt/local/share/java/clojure-contrib/launchers/bash/clj-env-dir"))
-	;; clojure
-	
+  ;;'(clojure-inferior-lisp-program "/opt/local/share/java/clojure-contrib/launchers/bash/clj-env-dir"))
+  ;; clojure
+
  ;; '(large-file-warning-threshold nil)
  )
 (custom-set-faces
@@ -817,7 +817,7 @@ and source-file directory for your debugger." t)
 (add-hook 'ansi-term-after-hook
           '(lambda ()
              (define-key term-raw-map "\C-c\C-t" 'shell-pop)
-						 (hl-line-unhighlight)))
+             (hl-line-unhighlight)))
 (defadvice ansi-term (after ansi-term-after-advice (org))
   "run hook as after advice"
   (run-hooks 'ansi-term-after-hook))
@@ -948,16 +948,16 @@ and source-file directory for your debugger." t)
 ;; (defun elscreen-frame-title-update ()
 ;;   (when (elscreen-screen-modified-p 'elscreen-frame-title-update)
 ;;     (let* ((screen-list (sort (elscreen-get-screen-list) '<))
-;; 	   (screen-to-name-alist (elscreen-get-screen-to-name-alist))
-;; 	   (title (mapconcat
-;; 		   (lambda (screen)
-;; 		     (format "%d%s %s"
-;; 			     screen (elscreen-status-label screen)
-;; 			     (get-alist screen screen-to-name-alist)))
-;; 		   screen-list " ")))
+;;     (screen-to-name-alist (elscreen-get-screen-to-name-alist))
+;;     (title (mapconcat
+;;       (lambda (screen)
+;;         (format "%d%s %s"
+;;           screen (elscreen-status-label screen)
+;;           (get-alist screen screen-to-name-alist)))
+;;       screen-list " ")))
 ;;       (if (fboundp 'set-frame-name)
-;; 	  (set-frame-name title)
-;; 	(setq frame-title-format title)))))
+;;    (set-frame-name title)
+;;  (setq frame-title-format title)))))
 
 ;; (eval-after-load "elscreen"
 ;;   '(add-hook 'elscreen-screen-update-hook 'elscreen-frame-title-update))
@@ -1020,7 +1020,7 @@ and source-file directory for your debugger." t)
 ;; 新しいバッファとしてすばやく開けるように、サーバーを立ち上げる
 ;;
 ;; emacsclient 経由で開いているバッファを閉じるとき
-;;  
+;;
 ;;      C-x #
 ;;
 ;; (if window-system (server-start))
@@ -1366,7 +1366,7 @@ and source-file directory for your debugger." t)
 ;; Get :
 ;;
 ;;  ftp://ftp.twaren.net/Unix/GNU/gnu/emacs/
-;; 
+;;
 ;;  ftp://alpha.gnu.org/gnu/emacs/pretest/
 ;;
 
