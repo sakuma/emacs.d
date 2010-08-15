@@ -797,6 +797,13 @@ and source-file directory for your debugger." t)
              (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;
+;;;       CSS-mode
+;;
+
+(setq css-indent-offset 2)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;
