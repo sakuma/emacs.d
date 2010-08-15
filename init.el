@@ -1352,30 +1352,18 @@ and source-file directory for your debugger." t)
 ;; キーワードのカラー表示を有効化
 (global-font-lock-mode t)
 
-;; (setq initial-frame-alist
-;;       (append
-;;        '((foreground-color . "gray")
-;;          (background-color . "black")
-;;          (cursor-color     . "blue")
-;;          (width . 100)
-;;          (height . 50)
-;;          (top . 0)
-;;          ;(right . 0)
-;;          (left . 0)
-;;          (alpha . (85 70)))
-;;        initial-frame-alist))
-
-(setq default-frame-alist
+;; フレームの初期値
+(setq initial-frame-alist
       (append
        '((foreground-color . "gray")
          (background-color . "black")
          (cursor-color     . "blue")
-         (width . 240)
-         (height . 75)
+;;          (width . XXX)
+;;          (height . XXX)
          (top . 0)
-         (left . 190)
-         (alpha . (85 70)))
-       default-frame-alist))
+;;          (left . XXX)
+         (alpha . (85 70))) ; 透明度 (active inactive)
+       initial-frame-alist))
 
 ;;(add-to-list 'default-frame-alist '(cursor-type . 'hbar))
 ;;'(bar . 1)
