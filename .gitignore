@@ -1,7 +1,7 @@
-.recentf
 auto-save-list/
 site-lisp/
 tmp/
 lib/
 !lib/orig
 tramp
+app-data/

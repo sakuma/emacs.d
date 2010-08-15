@@ -1218,8 +1218,11 @@ and source-file directory for your debugger." t)
 (global-auto-revert-mode 1)
 
 ;; ファイルを開いて，以前の続きを編集
-(load "saveplace")
+
 (setq-default save-place t)
+(require 'saveplace)
+(setq save-place-file "~/.emacs.d/app-data/.emacs-places")
+
 
 ;; Beep音を鳴らさない
 (setq visible-bell t)
@@ -1256,7 +1259,7 @@ and source-file directory for your debugger." t)
 
 ;; 最近開いたファイルを開く
 (setq recentf-auto-cleanup 'never)
-(setq recentf-save-file "~/.emacs.d/.recentf")
+(setq recentf-save-file "~/.emacs.d/app-data/.recentf")
 (recentf-mode 1)
 (global-set-key "\C-xf" 'recentf-open-files)
 
