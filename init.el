@@ -457,7 +457,7 @@ and source-file directory for your debugger." t)
 (setq auto-mode-alist (cons '("\\.erb$" . rhtml-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.rhtml$" . rhtml-mode) auto-mode-alist))
 (add-hook 'rhtml-mode-hook
-    (lambda () (rinari-launch)))
+          (lambda () (rinari-launch)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -561,8 +561,8 @@ and source-file directory for your debugger." t)
 ;;             (add-to-list 'ac-sources 'ac-source-rsense-constant)))
 
 ;; (add-hook 'ruby-mode-hook
-;;          (lambda ()
-;;            (local-set-key (kbd "C-c .") 'rsense-complete)))
+;;                                      (lambda ()
+;;                                              (local-set-key (kbd "C-c .") 'rsense-complete)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;
@@ -729,7 +729,7 @@ and source-file directory for your debugger." t)
   (c-toggle-auto-state 0)
   (c-toggle-hungry-state 1)
   (set (make-local-variable 'indent-line-function) 'my-js2-indent-function)
-  ; (define-key js2-mode-map [(meta control |)] 'cperl-lineup)
+  ;; (define-key js2-mode-map [(meta control |)] 'cperl-lineup)
   (define-key js2-mode-map "\C-\M-\\"
     '(lambda()
        (interactive)
@@ -738,8 +738,8 @@ and source-file directory for your debugger." t)
          (insert " ]----- */"))
        ))
   (define-key js2-mode-map "\C-m" 'newline-and-indent)
-  ; (define-key js2-mode-map [(backspace)] 'c-electric-backspace)
-  ; (define-key js2-mode-map [(control d)] 'c-electric-delete-forward)
+  ;; (define-key js2-mode-map [(backspace)] 'c-electric-backspace)
+  ;; (define-key js2-mode-map [(control d)] 'c-electric-delete-forward)
   (define-key js2-mode-map "\C-\M-q" 'my-indent-sexp)
   (if (featurep 'js2-highlight-vars)
       (js2-highlight-vars-mode))
@@ -895,23 +895,23 @@ and source-file directory for your debugger." t)
 ;; (setq ecb-layout-name "left2")
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
-  '(ecb-options-version "2.40")
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ecb-options-version "2.40")
  ;; '(gud-gdb-command-name "gdb --annotate=1")
-  '(inhibit-startup-screen t)
-  ;;'(clojure-inferior-lisp-program "/opt/local/share/java/clojure-contrib/launchers/bash/clj-env-dir"))
-  ;; clojure
+ '(inhibit-startup-screen t)
+ ;;'(clojure-inferior-lisp-program "/opt/local/share/java/clojure-contrib/launchers/bash/clj-env-dir"))
+ ;; clojure
 
  ;; '(large-file-warning-threshold nil)
  )
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  )
 
 
