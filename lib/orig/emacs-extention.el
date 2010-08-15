@@ -1,33 +1,21 @@
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;
+;;;;;          Original Extension
+;;;
 
 (defun kill-all-buffers ()
+  "すべてのBufferを削除(*scratch*, *Messages*以外)"
   (interactive)
+  (yes-or-no-p "kill all buffer? ")
   (dolist (buf (buffer-list))
-	  (kill-buffer buf)))
+    (unless (member (buffer-name) '("*scratch*" "*Messages*"))
+        (kill-buffer buf))))
 
-;; (defun kill-all-buffer (all)
-;;   (interactive); ”P”) ;”P”はprefix argumentを受け取る宣言のひとつ
-;;   (dolist (buf (buffer-list))
-;;     (if (or all ;prefix argumentがあれば全バッファを削除
-;;             (buffer-file-name buf)) ;通常はvisitしているfileを削除
-;;         (kill-buffer buf))))
+(define-key global-map "\C-xak" 'kill-all-buffers)
 
-
-;; バッファ再読み込み
-
-;; (defun revert-all-buffers ()
-;;   (interactive)
-;;   (let ((cbuf (current-buffer)))
-;;     (dolist (buf (buffer-list))
-;;       (if (not (buffer-file-name buf))
-;;    nil
-;;  (switch-to-buffer buf)
-;;  (revert-buffer t t)))
-;;     (switch-to-buffer cbuf)
-;;     ))
 
 (defun revert-all-buffers ()
-  "revert (reload) all buffer which is opened"
+  "バッファの再読み込み"
   (interactive)
   (let ((cbuf (current-buffer)))
     (dolist (buf (buffer-list))
@@ -37,9 +25,5 @@
         (revert-buffer t t)))
     (switch-to-buffer cbuf)))
 
-
-; (define-key global-map "\C-c\C-c\ p" 'revert-all-buffers)
-(define-key global-map "\C-xak" 'kill-all-buffers)
-
-
+(define-key global-map "\C-xar" 'revert-all-buffers)
 
