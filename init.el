@@ -44,7 +44,7 @@
 ;;;;
 ;;;       Programming Language setting
 ;;
-;
+                                        ;
 
 
 
@@ -88,7 +88,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;     Commmon Lisp
-;
+                                        ;
 
 (add-to-list 'auto-mode-alist '("\\.l$" . lisp-mode))
 (add-to-list 'auto-mode-alist '("\\.cl$" . lisp-mode))
@@ -297,7 +297,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;     Scheme-mode
-;
+                                        ;
 
 
 ;;;;;;;;;;;;;
@@ -306,8 +306,8 @@
 
 (modify-coding-system-alist 'process "gosh" '(utf-8 . utf-8))
 ;;(setq scheme-program-name "gosh -i")
-;(autoload 'scheme-mode "cmuscheme" "Major mode for Scheme." t)
-;(autoload 'run-scheme "cmuscheme" "Run an inferior Scheme process." t)
+                                        ;(autoload 'scheme-mode "cmuscheme" "Major mode for Scheme." t)
+                                        ;(autoload 'run-scheme "cmuscheme" "Run an inferior Scheme process." t)
 (defun scheme-other-window ()
   (setq scheme-program-name "gosh -i")
   "Run scheme on other window"
@@ -334,7 +334,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:
 ;;;;
 ;;    Ruby
-;
+                                        ;
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;;;;
@@ -457,7 +457,7 @@ and source-file directory for your debugger." t)
 (setq auto-mode-alist (cons '("\\.erb$" . rhtml-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.rhtml$" . rhtml-mode) auto-mode-alist))
 (add-hook 'rhtml-mode-hook
-    (lambda () (rinari-launch)))
+          (lambda () (rinari-launch)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -542,27 +542,27 @@ and source-file directory for your debugger." t)
 ;; auto-complete:
 ;;   git://github.com/m2ym/auto-complete.git
 
-(setq rsense-home "/Users/nao/.emacs.d/lib/rsense")
-(add-to-list 'load-path (concat rsense-home "/etc"))
-(add-to-list 'load-path "~/.emacs.d/site-lisp/auto-complete")
+;; (setq rsense-home "/Users/nao/.emacs.d/lib/rsense")
+;; (add-to-list 'load-path (concat rsense-home "/etc"))
+;; (add-to-list 'load-path "~/.emacs.d/site-lisp/auto-complete")
 ;; (add-to-list 'dictionary-directories "~/.emacs.d/site-lisp/auto-complete/dict")
 ;; (ac-config-default)
-(require 'auto-complete-config)
+;; (require 'auto-complete-config)
 
-(require 'rsense)
+;; (require 'rsense)
 ;; C-c .で補完
-(add-hook 'ruby-mode-hook
-          (lambda ()
-            (local-set-key (kbd "C-c .") 'ac-complete-rsense)))
-
-(add-hook 'ruby-mode-hook
-          (lambda ()
-            (add-to-list 'ac-sources 'ac-source-rsense-method)
-            (add-to-list 'ac-sources 'ac-source-rsense-constant)))
+;; (add-hook 'ruby-mode-hook
+;;                                       (lambda ()
+;;                                              (local-set-key (kbd "C-c .") 'ac-complete-rsense)))
 
 ;; (add-hook 'ruby-mode-hook
-;;          (lambda ()
-;;            (local-set-key (kbd "C-c .") 'rsense-complete)))
+;;                                      (lambda ()
+;;                                              (add-to-list 'ac-sources 'ac-source-rsense-method)
+;;                                              (add-to-list 'ac-sources 'ac-source-rsense-constant)))
+
+;; (add-hook 'ruby-mode-hook
+;;                                      (lambda ()
+;;                                              (local-set-key (kbd "C-c .") 'rsense-complete)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;
@@ -888,11 +888,11 @@ and source-file directory for your debugger." t)
 ;; (setq ecb-layout-name "left2")
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
-  '(ecb-options-version "2.40")
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ecb-options-version "2.40")
  ;; '(gud-gdb-command-name "gdb --annotate=1")
   '(inhibit-startup-screen t)
   ;;'(clojure-inferior-lisp-program "/opt/local/share/java/clojure-contrib/launchers/bash/clj-env-dir"))
@@ -901,10 +901,10 @@ and source-file directory for your debugger." t)
  ;; '(large-file-warning-threshold nil)
  )
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  )
 
 
@@ -1075,7 +1075,7 @@ and source-file directory for your debugger." t)
 ;;;;
 ;;;      Emacs config
 ;;
-;
+                                        ;
 
 
 ;;画面を 2 分割したときの 上下を入れ替える swap screen
@@ -1356,16 +1356,16 @@ and source-file directory for your debugger." t)
 ;;        initial-frame-alist))
 
 (setq default-frame-alist
-			(append
-			 '((foreground-color . "gray")
-				 (background-color . "black")
-				 (cursor-color		 . "blue")
-				 (width . 150)
-				 (height . 50)
-				 (top . 0)
-				 (left . 190)
-				 (alpha . (85 70)))
-			 default-frame-alist))
+      (append
+       '((foreground-color . "gray")
+         (background-color . "black")
+         (cursor-color           . "blue")
+         (width . 240)
+         (height . 75)
+         (top . 0)
+         (left . 190)
+         (alpha . (85 70)))
+       default-frame-alist))
 
 ;;(add-to-list 'default-frame-alist '(cursor-type . 'hbar))
 ;;'(bar . 1)
@@ -1442,9 +1442,9 @@ and source-file directory for your debugger." t)
 ;;=======================================================================
 (show-paren-mode t)
 
-;=======================================================================
-; リージョンに色を付ける
-;=======================================================================
+                                        ;=======================================================================
+                                        ; リージョンに色を付ける
+                                        ;=======================================================================
 (setq transient-mark-mode t)
 
 
