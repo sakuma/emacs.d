@@ -388,6 +388,11 @@ the directory containing file becomes the initial working directory
 and source-file directory for your debugger." t)
 
 
+;; マジックコメントを消す (Ruby 1.9系では必須)
+(custom-set-variables
+ '(ruby-insert-encoding-magic-comment nil))
+
+
 ;; rrb - Ruby Refactoring Browser
 ;; (load "rrb")
 
