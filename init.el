@@ -1204,11 +1204,7 @@ and source-file directory for your debugger." t)
 
 (global-set-key "\C-x\C-i" 'indent-region) ; 選択範囲をインデント
 (global-set-key "\C-j" 'newline-and-indent) ; C-j で改行とインデント
-
 ;;(global-set-key "\C-j" 'newline)  ; 改行
-
-(global-set-key "\C-cc" 'comment-region)    ; C-c c を範囲指定コメントに
-(global-set-key "\C-cu" 'uncomment-region)  ; C-c u を範囲指定コメント解除に
 
 (show-paren-mode t) ; 対応する括弧を光らせる。
 (transient-mark-mode t) ; 選択部分のハイライト
