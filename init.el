@@ -27,10 +27,29 @@
 
 (add-to-load-path-recursion
  "/Applications/Emacs.app/Contents/Resources/site-lisp" ;; subdirs.el
- (concat user-emacs-directory "site-lisp"))
+ (concat user-emacs-directory "site-lisp")
+ (concat user-emacs-directory "auto-install"))
+
 
 ;; 自作 elisp
 (load-file "~/.emacs.d/lib/orig/emacs-extention.el")
+
+
+;;;;;;;;;;
+;;
+;;  auto-install -- http://www.emacswiki.org/emacs/download/auto-install.el
+;;
+(when (require 'auto-install nil t)
+  ;;; デフォルトは "~/.emacs.d/auto-install/"
+  ;; (setq auto-install-directory "~/.emacs.d/site-lisp/")
+  ;;; EmacsWikiに登録されている elisp の名前を取得
+  (auto-install-update-emacswiki-package-name t)
+  ;;; プロキシの設定
+  ;; (setq url-proxy-services '(("http" . "localhost:8339")))
+  ;; (auto-install-from-url) ; 下記と同定義
+  (auto-install-compatibility-setup))   ; 互換性確保
+
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1333,12 +1352,6 @@ and source-file directory for your debugger." t)
 
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;  auto-install
-;; (require 'auto-install)
-;; (setq auto-install-directory "~/.emacs.d/site-lisp/")
-;; (auto-install-update-emacswiki-package-name t)
-;; (auto-install-compatibility-setup)             ; 互換性確保
 
 ;;;
 ;; Config window
