@@ -1429,6 +1429,7 @@ and source-file directory for your debugger." t)
 
 
 
+(require 'redo+)
 
 ;;; toolバーを消す
 (tool-bar-mode 0)
