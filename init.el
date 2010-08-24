@@ -13,28 +13,21 @@
 ;; (add-hook 'kill-emacs-hook 'byte-compile-dotfiles)
 
 
+;;;;;;
+;;
+;;  load-path
+;;
+(defun add-to-load-path-recursion (&rest dir-paths)
+  "指定したディレクトリ以下のすべてのディレクトリをload-pathに追加"
+  (dolist (dir-path dir-paths)
+    (when (and (stringp dir-path) (file-directory-p dir-path))
+      (let ((default-directory dir-path))
+        (setq load-path (cons default-directory load-path))
+        (normal-top-level-add-subdirs-to-load-path)))))
 
-;; load-path
-(setq load-path
-      (append '(
-                "/Applications/Emacs.app/Contents/Resources/site-lisp" ;; subdirs.el
-                ;; "~/.emacs.d/site-lisp"              ;; main
-                ;; "~/.emacs.d/site-lisp/apel"
-                ;; "~/.emacs.d/site-lisp/emu"
-                ;; "/opt/local/share/emacs/site-lisp"
-                )
-              load-path))
-
-;; site-lisp以下のすべてのディレクトリをload-pathに追加
-(defconst my-elisp-directory "~/.emacs.d/site-lisp" "The directory for my elisp file.")
-
-(dolist (dir (let ((dir (expand-file-name my-elisp-directory)))
-               (list dir (format "%s%d" dir emacs-major-version))))
-  (when (and (stringp dir) (file-directory-p dir))
-    (let ((default-directory dir))
-      (setq load-path (cons default-directory load-path))
-      (normal-top-level-add-subdirs-to-load-path))))
-
+(add-to-load-path-recursion
+ "/Applications/Emacs.app/Contents/Resources/site-lisp" ;; subdirs.el
+ (concat user-emacs-directory "site-lisp"))
 
 ;; 自作 elisp
 (load-file "~/.emacs.d/lib/orig/emacs-extention.el")
