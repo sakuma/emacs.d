@@ -1073,6 +1073,16 @@ and source-file directory for your debugger." t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;
+;;     SVN Client -
+;;  dsvn : http://svn.apache.org/repos/asf/subversion/trunk/contrib/client-side/emacs/dsvn.el
+
+(autoload 'svn-status "dsvn" "Run `svn status'." t)
+(autoload 'svn-update "dsvn" "Run `svn update'." t)
+(require 'vc-svn)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;
 ;;     elscreen
 ;;
 ;; Home page : http://www.morishima.net/~naoto/software/elscreen/index.php.ja
