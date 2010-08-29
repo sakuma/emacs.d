@@ -1060,10 +1060,12 @@ and source-file directory for your debugger." t)
 ;; (add-to-list 'load-path "/opt/local/share/doc/git-core/contrib/emacs")
 ;; (require 'git)
 ;; (require 'git-blame)
-
+;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;;  egg - Emacs got Git (clone (fork) of Magit)
+;;  egg ( Emacs Got Git ) - clone (fork) of "Magit"
+;;
+;;     http://github.com/byplayer/egg/raw/master/egg.el
 ;;
 (when (executable-find "git")
   (require 'egg nil t))
