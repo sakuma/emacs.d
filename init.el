@@ -13,31 +13,43 @@
 ;; (add-hook 'kill-emacs-hook 'byte-compile-dotfiles)
 
 
+;;;;;;
+;;
+;;  load-path
+;;
+(defun add-to-load-path-recursion (&rest dir-paths)
+  "指定したディレクトリ以下のすべてのディレクトリをload-pathに追加"
+  (dolist (dir-path dir-paths)
+    (when (and (stringp dir-path) (file-directory-p dir-path))
+      (let ((default-directory dir-path))
+        (setq load-path (cons default-directory load-path))
+        (normal-top-level-add-subdirs-to-load-path)))))
 
-;; load-path
-(setq load-path
-      (append '(
-                "/Applications/Emacs.app/Contents/Resources/site-lisp" ;; subdirs.el
-                ;; "~/.emacs.d/site-lisp"              ;; main
-                ;; "~/.emacs.d/site-lisp/apel"
-                ;; "~/.emacs.d/site-lisp/emu"
-                ;; "/opt/local/share/emacs/site-lisp"
-                )
-              load-path))
-
-;; site-lisp以下のすべてのディレクトリをload-pathに追加
-(defconst my-elisp-directory "~/.emacs.d/site-lisp" "The directory for my elisp file.")
-
-(dolist (dir (let ((dir (expand-file-name my-elisp-directory)))
-               (list dir (format "%s%d" dir emacs-major-version))))
-  (when (and (stringp dir) (file-directory-p dir))
-    (let ((default-directory dir))
-      (setq load-path (cons default-directory load-path))
-      (normal-top-level-add-subdirs-to-load-path))))
+(add-to-load-path-recursion
+ "/Applications/Emacs.app/Contents/Resources/site-lisp" ;; subdirs.el
+ (concat user-emacs-directory "site-lisp")
+ (concat user-emacs-directory "auto-install"))
 
 
 ;; 自作 elisp
 (load-file "~/.emacs.d/lib/orig/emacs-extention.el")
+
+
+;;;;;;;;;;
+;;
+;;  auto-install -- http://www.emacswiki.org/emacs/download/auto-install.el
+;;
+(when (require 'auto-install nil t)
+  ;;; デフォルトは "~/.emacs.d/auto-install/"
+  ;; (setq auto-install-directory "~/.emacs.d/site-lisp/")
+  ;;; EmacsWikiに登録されている elisp の名前を取得
+  (auto-install-update-emacswiki-package-name t)
+  ;;; プロキシの設定
+  ;; (setq url-proxy-services '(("http" . "localhost:8339")))
+  ;; (auto-install-from-url) ; 下記と同定義
+  (auto-install-compatibility-setup))   ; 互換性確保
+
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1028,18 +1040,45 @@ and source-file directory for your debugger." t)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;
+;;      Git フロントエンド
 ;;
-;;    Git  ※最新は vc-git.elが添付されて
+;;  ※最新は vc-git.elが添付されている
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; magitを使う場合
 ;;
 ;; magit.el ---  git://gitorious.org/magit/mainline.git
 ;; (add-to-list 'load-path "~/.emacs.d/site-lisp/mainline")
 ;; (require 'magit)
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Git付属
+;;
+;; (add-to-list 'load-path "/opt/local/share/doc/git-core/contrib/emacs")
+;; (require 'git)
+;; (require 'git-blame)
 
-(add-to-list 'load-path "/opt/local/share/doc/git-core/contrib/emacs")
-(require 'git)
-(require 'git-blame)
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;  egg - Emacs got Git (clone (fork) of Magit)
+;;
+(when (executable-find "git")
+  (require 'egg nil t))
+;; ファイルを保存したときに、eggステータスも更新されバッファーがアクティブになる
+(setq egg-auto-update t)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;
+;;     SVN Client -
+;;  dsvn : http://svn.apache.org/repos/asf/subversion/trunk/contrib/client-side/emacs/dsvn.el
+
+(autoload 'svn-status "dsvn" "Run `svn status'." t)
+(autoload 'svn-update "dsvn" "Run `svn update'." t)
+(require 'vc-svn)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1204,11 +1243,7 @@ and source-file directory for your debugger." t)
 
 (global-set-key "\C-x\C-i" 'indent-region) ; 選択範囲をインデント
 (global-set-key "\C-j" 'newline-and-indent) ; C-j で改行とインデント
-
 ;;(global-set-key "\C-j" 'newline)  ; 改行
-
-(global-set-key "\C-cc" 'comment-region)    ; C-c c を範囲指定コメントに
-(global-set-key "\C-cu" 'uncomment-region)  ; C-c u を範囲指定コメント解除に
 
 (show-paren-mode t) ; 対応する括弧を光らせる。
 (transient-mark-mode t) ; 選択部分のハイライト
@@ -1344,12 +1379,6 @@ and source-file directory for your debugger." t)
 
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;  auto-install
-;; (require 'auto-install)
-;; (setq auto-install-directory "~/.emacs.d/site-lisp/")
-;; (auto-install-update-emacswiki-package-name t)
-;; (auto-install-compatibility-setup)             ; 互換性確保
 
 ;;;
 ;; Config window
@@ -1427,6 +1456,7 @@ and source-file directory for your debugger." t)
 
 
 
+(require 'redo+)
 
 ;;; toolバーを消す
 (tool-bar-mode 0)

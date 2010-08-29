@@ -5,3 +5,5 @@ lib/
 !lib/orig
 tramp
 app-data/
+auto-install
+url
