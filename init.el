@@ -67,7 +67,6 @@
 (load "~/.emacs.d/inits/prog-init")
 
 
-(require 'anything)
 
 
 
