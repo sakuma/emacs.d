@@ -385,7 +385,7 @@
 ;;;;;
 ;;;     utils
 ;;
-(load "~/.emacs.d/inits/utils")
+(load "~/.emacs.d/inits/utils-init")
 
 
 
@@ -438,7 +438,7 @@
 ;;;;
 ;;     scm (Software Configuration Management)
 ;;
-(load "~/.emacs.d/inits/scm")
+(load "~/.emacs.d/inits/scm-init")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;
