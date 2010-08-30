@@ -17,6 +17,13 @@
 ;;
 (load "~/.emacs.d/inits/prog-inits/ruby-init")
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;   Javascript
+;;
+(load "~/.emacs.d/inits/prog-inits/javascript-init")
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;
