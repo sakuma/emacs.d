@@ -98,3 +98,12 @@
 
 (when (require 'undo-tree)
   (global-undo-tree-mode))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;    補完 - auto-complete
+;;
+(when (require 'auto-complete-config nil t)
+  (add-to-list 'ac-dictionary-directories "~/.emacs.d/site-lisp/auto-complete//ac-dict")
+  (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
+  (ac-config-default))
