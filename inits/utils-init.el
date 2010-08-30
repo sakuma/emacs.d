@@ -119,7 +119,7 @@
 (when (require 'anything nil t)
   (setq
    ;; 候補を表示するまでの時間。デフォは0.5秒
-   anything-idle-delay 0.3
+   anything-idle-delay 0.2
    ;; タイプして再描写するまでの時間。デフォは0.1
    anything-input-idle-delay 0.2
    ;; 候補の最大表示数。 デフォは 50
@@ -153,5 +153,13 @@
     ;; descbinds-bindings をAnythingに置き換える
     (descbinds-anything-install))
 
-  (require 'anything-grep nil t))
+  (require 'anything-grep nil t)
 
+  ;; (install-elisp "http://github.com/imakado/anything-project/raw/master/anything-project.el")
+  (when (require 'anything-project nil t)
+    (global-set-key (kbd "C-c C-f") 'anything-project)
+    ;; 検索対象から除外するフィルタ
+    (setq ap:project-files-filters
+          (list (lambda (files)
+                  (remove-if 'file-directory-p files)
+                  (remove-if '(lambda (file) (string-match-p "~$" file)) files))))))
