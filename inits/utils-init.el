@@ -63,3 +63,38 @@
 ;;         (forward-line 1)
 ;;         (beginning-of-line)
 ;;         (keep-lines str)))))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;    wdired (標準添付)
+;;
+(require 'wdired)
+(define-key dired-mode-map "r"
+  'wdired-change-to-wdired-mode)
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;    履歴
+;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;    undohist - 閉じたバッファもUndoできる
+;;
+;; (install-elisp "http://cx4a.org/pub/undohist.el")
+;;
+(when (require 'undohist nil t)
+  (undohist-initialize))
+
+;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;    undo-tree - 履歴を視角化
+;;
+;; (install-elisp "http://www.dr-qubit.org/undo-tree/undo-tree.el")
+;;
+
+(when (require 'undo-tree)
+  (global-undo-tree-mode))
