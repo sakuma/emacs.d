@@ -958,40 +958,12 @@ and source-file directory for your debugger." t)
 ;;(setq system-uses-terminfo nil)
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;
-;; uniquify
-;; http://www.ysbl.york.ac.uk/~emsley/software/stuff/uniquify.el
-
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;
-;;;      occur, multi-occur
+;;;     utils
 ;;
+(load "~/.emacs.d/inits/utils")
 
-;; occur の結果で，F を入力すると，入力した文字を含む行が削除される
-;; (flush-lines が実行される)．
-(define-key occur-mode-map "F"
-  (lambda (str) (interactive "sflush: ")
-    (let ((buffer-read-only))
-      (save-excursion
-        (beginning-of-buffer)
-        (forward-line 1)
-        (beginning-of-line)
-        (flush-lines str)))))
-
-;; occur の結果で "K" を入力すると，入力した文字を含む行だけが残る
-;;  (keep-lines が実行される)
-(define-key occur-mode-map "K"
-  (lambda (str) (interactive "skeep: ")
-    (let ((buffer-read-only))
-      (save-excursion
-        (beginning-of-buffer)
-        (forward-line 1)
-        (beginning-of-line)
-        (keep-lines str)))))
 
 
 ;; Emacs でファイルをsudoで開き直す
@@ -1041,45 +1013,9 @@ and source-file directory for your debugger." t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;
-;;      Git フロントエンド
+;;     scm (Software Configuration Management)
 ;;
-;;  ※最新は vc-git.elが添付されている
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;; magitを使う場合
-;;
-;; magit.el ---  git://gitorious.org/magit/mainline.git
-;; (add-to-list 'load-path "~/.emacs.d/site-lisp/mainline")
-;; (require 'magit)
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;; Git付属
-;;
-;; (add-to-list 'load-path "/opt/local/share/doc/git-core/contrib/emacs")
-;; (require 'git)
-;; (require 'git-blame)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;  egg - Emacs got Git (clone (fork) of Magit)
-;;
-(when (executable-find "git")
-  (require 'egg nil t))
-;; ファイルを保存したときに、eggステータスも更新されバッファーがアクティブになる
-(setq egg-auto-update t)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;
-;;     SVN Client -
-;;  dsvn : http://svn.apache.org/repos/asf/subversion/trunk/contrib/client-side/emacs/dsvn.el
-
-(autoload 'svn-status "dsvn" "Run `svn status'." t)
-(autoload 'svn-update "dsvn" "Run `svn update'." t)
-(require 'vc-svn)
-
+(load "~/.emacs.d/inits/scm")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;
