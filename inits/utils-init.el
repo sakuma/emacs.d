@@ -63,3 +63,12 @@
 ;;         (forward-line 1)
 ;;         (beginning-of-line)
 ;;         (keep-lines str)))))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;    wdired (標準添付)
+;;
+(require 'wdired)
+(define-key dired-mode-map "r"
+  'wdired-change-to-wdired-mode)
