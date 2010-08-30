@@ -526,7 +526,7 @@
 (setq truncate-partial-width-windows nil)
 
 ;;   左側に行数表示
-(require 'linum nil t)
+;; (require 'linum nil t)
 (global-linum-mode) ; すべてのバッファに対し、起動時に表示
 
 ;; 自動再読み込み
@@ -537,16 +537,16 @@
 
 ;;; 補完
 ;; C-x b で候補を絞り込む
-(iswitchb-mode 1)
+;; (iswitchb-mode 1)
 ;; (partial-completion-mode 1)
 
 ;; (mcomplete-mode 1)
 
 ;; 最近開いたファイルを開く
-(setq recentf-auto-cleanup 'never)
+;; (setq recentf-auto-cleanup 'never)
 (setq recentf-save-file "~/.emacs.d/app-data/.recentf")
 (recentf-mode 1)
-(global-set-key "\C-xf" 'recentf-open-files)
+;; (global-set-key "\C-xf" 'recentf-open-files)
 
 
 (require 'parenthesis)
