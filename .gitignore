@@ -9,3 +9,4 @@ auto-install
 url
 undohist
 ac-comphist.dat
+*.elc

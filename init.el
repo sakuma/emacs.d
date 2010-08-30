@@ -50,6 +50,13 @@
   (auto-install-compatibility-setup))   ; 互換性確保
 
 
+;;;;;;;;;;
+;;
+;;  auto-async-byte-compile -- from emacswiki.org
+;;
+(require 'auto-async-byte-compile)
+(setq auto-async-byte-compile-exclude-files-regexp "/.el/")
+(add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;
