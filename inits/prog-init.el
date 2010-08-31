@@ -24,6 +24,43 @@
 (load "~/.emacs.d/inits/prog-inits/javascript-init")
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;       YAML-mode
+;;
+
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
+;; Unlike python-mode, this mode follows the Emacs convention of not
+;; binding the ENTER key to `newline-and-indent'.  To get this
+;; behavior, add the key definition to `yaml-mode-hook':
+
+(add-hook 'yaml-mode-hook
+          '(lambda ()
+             (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;       CSS-mode
+;;
+(setq-default css-indent-offset 2)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;
+;;;       Zencoding-mode   --- HTML,CSS
+;;
+;; git://github.com/chrisdone/zencoding.git
+
+(require 'zencoding-mode)
+
+(add-hook 'html-mode-hook 'zencoding-mode)
+(add-hook 'nxhtml-mode-hook 'zencoding-mode)
+(add-hook 'text-mode-hook 'zencoding-mode)
+(add-hook 'sgml-mode-hook 'zencoding-mode)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;
