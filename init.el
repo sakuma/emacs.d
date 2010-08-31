@@ -32,7 +32,7 @@
 
 
 ;; 自作 elisp
-(load-file "~/.emacs.d/lib/orig/emacs-extention.el")
+(load "~/.emacs.d/lib/orig/emacs-extention")
 
 
 ;;;;;;;;;;
