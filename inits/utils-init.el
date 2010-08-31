@@ -123,7 +123,7 @@
    ;; タイプして再描写するまでの時間。デフォは0.1
    anything-input-idle-delay 0.2
    ;; 候補の最大表示数。 デフォは 50
-   anything-candidate-number-limit 100
+   anything-candidate-number-limit 200
    ;; 候補が多いときに体感速度を早くする
    anything-quick-update t
    ;; 候補選択ショートカットをアルファベットに
@@ -157,7 +157,7 @@
 
   ;; (install-elisp "http://github.com/imakado/anything-project/raw/master/anything-project.el")
   (when (require 'anything-project nil t)
-    (global-set-key (kbd "C-c C-f") 'anything-project)
+    (global-set-key (kbd "C-c C-p") 'anything-project)
     ;; 検索対象から除外するフィルタ
     (setq ap:project-files-filters
           (list (lambda (files)
