@@ -9,3 +9,5 @@ auto-install
 url
 undohist
 ac-comphist.dat
+*.elc
+anything-c-adaptive-history
