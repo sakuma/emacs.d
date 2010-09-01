@@ -34,7 +34,7 @@
 (when (executable-find "git")
   (require 'egg nil t))
 ;; ファイルを保存したときに、eggステータスも更新されバッファーがアクティブになる
-(setq egg-auto-update t)
+;; (setq egg-auto-update t)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
