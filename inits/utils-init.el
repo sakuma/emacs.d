@@ -163,3 +163,15 @@
           (list (lambda (files)
                   (remove-if 'file-directory-p files)
                   (remove-if '(lambda (file) (string-match-p "~$" file)) files))))))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;    auto-save-buffers
+;;
+;;  (install-elisp "http://0xcc.net/misc/auto-save/auto-save-buffers.el")
+;;  ※ 文字化け注意
+(require 'auto-save-buffers)
+(run-with-idle-timer 2.0 t 'auto-save-buffers) ; アイドル2.0秒で保存
+;; auto-save-buffers の on/off を切り替えるためのキー定義 (C-x a s)
+;;   (define-key ctl-x-map "as" 'auto-save-buffers-toggle)
