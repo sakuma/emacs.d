@@ -76,14 +76,6 @@
 ;;
 ;;  フレームの初期値
 ;;
-(setq initial-frame-alist
-      '((foreground-color . "gray")
-        (background-color . "black")
-        (cursor-color . "blue")
-        (height . 100) ; Emacsがディスプレーの高さにあわせてくれるため、大きい数字を与えておく
-        (top    . 0)
-        (alpha  . (85 70)))) ; 透明度 (active inactive)
-
 ;; 環境毎の設定
 (when (string= system-name "imac.lan")
   (progn
@@ -92,8 +84,17 @@
 
 (when (string= system-name "MacBook.local")
   (progn
-    (add-to-list 'initial-frame-alist '(width . 170))
-    (add-to-list 'initial-frame-alist '(left  . 50))))
+    (add-to-list 'default-frame-alist '(width . 170))
+    (add-to-list 'default-frame-alist '(left  . 50))))
+
+(setq initial-frame-alist
+      '((foreground-color . "gray")
+        (background-color . "black")
+        (cursor-color . "blue")
+        (height . 100) ; Emacsがディスプレーの高さにあわせてくれるため、大きい数字を与えておく
+        (top    . 0)
+        (alpha  . (85 70)))) ; 透明度 (active inactive)
+
 
 
 ;;; カーソルの点滅を止める
