@@ -83,13 +83,17 @@
         (height . 100) ; Emacsがディスプレーの高さにあわせてくれるため、大きい数字を与えておく
         (top    . 0)
         (alpha  . (85 70)))) ; 透明度 (active inactive)
-;; iMac
+
+;; 環境毎の設定
 (when (string= system-name "imac.lan")
   (progn
     (add-to-list 'initial-frame-alist '(width . 245))
     (add-to-list 'initial-frame-alist '(left  . 165))))
-nnp
 
+(when (string= system-name "MacBook.local")
+  (progn
+    (add-to-list 'initial-frame-alist '(width . 170))
+    (add-to-list 'initial-frame-alist '(left  . 50))))
 
 
 ;;; カーソルの点滅を止める

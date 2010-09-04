@@ -7,10 +7,10 @@
 (require 'ucs-normalize)
 
 (let ((coding-sym
-			 (if (string= window-system "ns") 'utf-8-nfd 'utf-8)))
-	(prefer-coding-system coding-sym)
-	(setq file-name-coding-system coding-sym)
-	(setq locale-coding-system coding-sym))
+       (if (string= window-system "ns") 'utf-8-nfd 'utf-8)))
+  (prefer-coding-system coding-sym)
+  (setq file-name-coding-system coding-sym)
+  (setq locale-coding-system coding-sym))
 
 ;; (set-default-coding-systems 'sjis-mac)
 ;; (set-default-coding-systems 'utf-8)
