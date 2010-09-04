@@ -1,51 +1,56 @@
+
+;;;;;;
+;;
+;;  言語設定
+
 (set-language-environment 'Japanese)
-(prefer-coding-system 'utf-8)
+(require 'ucs-normalize)
+
+(let ((coding-sym
+			 (if (string= window-system "ns") 'utf-8-nfd 'utf-8)))
+	(prefer-coding-system coding-sym)
+	(setq file-name-coding-system coding-sym)
+	(setq locale-coding-system coding-sym))
+
 ;; (set-default-coding-systems 'sjis-mac)
-;;(set-default-coding-systems 'utf-8)
-
+;; (set-default-coding-systems 'utf-8)
 ;; (set-clipboard-coding-system 'sjis-mac)
-(set-clipboard-coding-system 'utf-8)
-
 ;; (set-buffer-file-coding-system 'sjis-mac)
-
-(setq-default buffer-file-coding-system 'utf-8)
-(set-terminal-coding-system 'utf-8)
+;; (setq-default buffer-file-coding-system 'utf-8)
+;; (set-terminal-coding-system 'utf-8)
 ;; (set-keyboard-coding-system 'sjis-mac)
-
-
 ;; (setq default-input-method "MacOSX")
 ;; (utf-translate-cjk-mode 1)
-
-(set-file-name-coding-system 'utf-8)
-
-
 ;; 日本語infoの文字化け防止
-(auto-compression-mode t)
-
+;; (auto-compression-mode t)
 ;; (setq Info-directory-list
 ;;     (list "/usr/local/share/info" "/Applications/Emacs.app/Contents/Resources/extra/info/"))
 ;; /usr/share/info" "/usr/ml/info" "/usr/jp/info"))
 
 
+;;;;;;
+;;
+;;  Mac特有の設定
 
-;; (setq mac-allow-anti-aliasing nil)  ; mac 固有の設定
-;;(mac-key-mode 1) ; MacKeyModeを使う
+(when (string= window-system "ns")
+  ;; mac 用の command キーバインド
+  ;; (setq mac-allow-anti-aliasing nil)  ; mac 固有の設定
+  ;;(mac-key-mode 1) ; MacKeyModeを使う
 
-;;;; mac 用の command キーバインド
+  ;; for Carbon
+  ;; (setq mac-option-modifier 'meta)
+  ;; for Cocoa
+  (setq ns-command-modifier (quote meta))
+  (setq ns-alternate-modifier (quote super))
 
-;;;; for Carbon
-;; (setq mac-option-modifier 'meta)
-;;;; for Cocoa
-(setq ns-command-modifier (quote meta))
-(setq ns-alternate-modifier (quote super))
-
-;; Drag and Drop
-(define-key global-map [ns-drag-file] 'ns-find-file)
+  ;; Drag and Drop
+  (define-key global-map [ns-drag-file] 'ns-find-file)
 
 
-(setq mac-pass-control-to-system nil)
-(setq mac-pass-command-to-system nil)
-(setq mac-pass-option-to-system nil)
+  (setq mac-pass-control-to-system nil)
+  (setq mac-pass-command-to-system nil)
+  (setq mac-pass-option-to-system nil))
+
 
 
 
@@ -153,10 +158,3 @@
 
 (global-set-key "\C-a" 'beginning-of-visual-indented-line)
 (global-set-key "\C-e" 'end-of-visual-line)
-
-
-
-
-
-
-
