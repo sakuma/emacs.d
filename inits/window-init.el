@@ -77,10 +77,10 @@
        '((foreground-color . "gray")
          (background-color . "black")
          (cursor-color     . "blue")
-         (width . 240)
-         (height . 75)
+         ;; (width . 240) ; iMac
+         (height . 100)
          (top . 0)
-         (left . 190)
+         ;; (left . 190) ; iMac
          (alpha . (85 70))) ; 透明度 (active inactive)
        initial-frame-alist))
 
