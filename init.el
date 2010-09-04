@@ -193,32 +193,6 @@
  )
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;
-;; shell-pop
-;;
-;; http://www.emacswiki.org/emacs/download/shell-pop.el
-;;
-(require 'shell-pop)
-(shell-pop-set-internal-mode "ansi-term")
-(shell-pop-set-internal-mode-shell "/bin/zsh")
-
-(defvar ansi-term-after-hook nil)
-(add-hook 'ansi-term-after-hook
-          '(lambda ()
-             (define-key term-raw-map "\C-c\C-t" 'shell-pop)
-             (hl-line-unhighlight)))
-(defadvice ansi-term (after ansi-term-after-advice (org))
-  "run hook as after advice"
-  (run-hooks 'ansi-term-after-hook))
-(ad-activate 'ansi-term)
-(global-set-key "\C-c\C-t" 'shell-pop)
-;; Besides, you can set the window height, the number for the percentage
-;; for selected window.
-(shell-pop-set-window-height 40)
-
-;;(setq system-uses-terminfo nil)
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;
 ;;;     utils
@@ -266,10 +240,10 @@
 ;;;   git://github.com/fukamachi/redmine-el.git
 ;;
 ;; (add-to-list 'load-path "~/.emacs.d/site-lisp/redmine-el")
-(require 'redmine)
-(setq redmine-project-alist
-      '(("woman" "https://redmine.everyleaf.com/projects/show/woman-life" "eMpnO6r6MIbG0EybDDwgevniYLeAJPeUnjUUjRBe")
-        ("smalldesk" "https://redmine.everyleaf.com/projects/show/smalldesk")))
+;; (require 'redmine)
+;; (setq redmine-project-alist
+;;       '(("woman" "https://redmine.everyleaf.com/projects/show/woman-life" "eMpnO6r6MIbG0EybDDwgevniYLeAJPeUnjUUjRBe")
+;;         ("smalldesk" "https://redmine.everyleaf.com/projects/show/smalldesk")))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
