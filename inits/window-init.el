@@ -71,27 +71,29 @@
 ;; キーワードのカラー表示を有効化
 (global-font-lock-mode t)
 
-;; フレームの初期値
-(setq initial-frame-alist
-      (append
-       '((foreground-color . "gray")
-         (background-color . "black")
-         (cursor-color     . "blue")
-         ;; (width . 240) ; iMac
-         (height . 100)
-         (top . 0)
-         ;; (left . 190) ; iMac
-         (alpha . (85 70))) ; 透明度 (active inactive)
-       initial-frame-alist))
 
-;;(add-to-list 'default-frame-alist '(cursor-type . 'hbar))
-;;'(bar . 1)
+;;;;;;;;
+;;
+;;  フレームの初期値
+;;
+(setq initial-frame-alist
+      '((foreground-color . "gray")
+        (background-color . "black")
+        (cursor-color . "blue")
+        (height . 100) ; Emacsがディスプレーの高さにあわせてくれるため、大きい数字を与えておく
+        (top    . 0)
+        (alpha  . (85 70)))) ; 透明度 (active inactive)
+;; iMac
+(when (string= system-name "imac.lan")
+  (progn
+    (add-to-list 'initial-frame-alist '(width . 245))
+    (add-to-list 'initial-frame-alist '(left  . 165))))
+nnp
+
+
 
 ;;; カーソルの点滅を止める
 (blink-cursor-mode 0)
-
-
-
 
 ;; カーソル行をハイライト
 (defface hlline-face
