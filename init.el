@@ -2,21 +2,13 @@
 ;;;;;
 ;;;      Emacs Config
 ;;
-;; 変更があったらその都度勝手にバイトコンパイルする
-;; http://www.netlaputa.ne.jp/~kose/Emacs/index2.html#Gnus_speedup
-;; (defun byte-compile-dotfiles ()
-;;   "byte-compile dotfiles."
-;;   (interactive)
-;;   (if (file-newer-than-file-p "~/.emacs.d/init.el")
-;;       (byte-compile-file "~/.emacs.d/init.elc"))
-;;   )
-;; (add-hook 'kill-emacs-hook 'byte-compile-dotfiles)
+;;
 
 
-;;;;;;
+;;;;;;;;;;
 ;;
 ;;  load-path
-;;
+
 (defun add-to-load-path-recursion (&rest dir-paths)
   "指定したディレクトリ以下のすべてのディレクトリをload-pathに追加"
   (dolist (dir-path dir-paths)
@@ -30,8 +22,10 @@
  (concat user-emacs-directory "site-lisp")
  (concat user-emacs-directory "auto-install"))
 
+;;;;;;;;;;
+;;
+;;  自作 elisp
 
-;; 自作 elisp
 (load "~/.emacs.d/lib/orig/emacs-extention")
 
 
@@ -691,6 +685,8 @@
 ;;; Emacs
 ;;
 ;; Get :
+;;
+;;  git clone git://git.savannah.gnu.org/emacs.git
 ;;
 ;;  ftp://ftp.twaren.net/Unix/GNU/gnu/emacs/
 ;;
