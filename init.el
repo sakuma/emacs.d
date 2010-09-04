@@ -2,21 +2,13 @@
 ;;;;;
 ;;;      Emacs Config
 ;;
-;; 変更があったらその都度勝手にバイトコンパイルする
-;; http://www.netlaputa.ne.jp/~kose/Emacs/index2.html#Gnus_speedup
-;; (defun byte-compile-dotfiles ()
-;;   "byte-compile dotfiles."
-;;   (interactive)
-;;   (if (file-newer-than-file-p "~/.emacs.d/init.el")
-;;       (byte-compile-file "~/.emacs.d/init.elc"))
-;;   )
-;; (add-hook 'kill-emacs-hook 'byte-compile-dotfiles)
+;;
 
 
-;;;;;;
+;;;;;;;;;;
 ;;
 ;;  load-path
-;;
+
 (defun add-to-load-path-recursion (&rest dir-paths)
   "指定したディレクトリ以下のすべてのディレクトリをload-pathに追加"
   (dolist (dir-path dir-paths)
@@ -30,8 +22,10 @@
  (concat user-emacs-directory "site-lisp")
  (concat user-emacs-directory "auto-install"))
 
+;;;;;;;;;;
+;;
+;;  自作 elisp
 
-;; 自作 elisp
 (load "~/.emacs.d/lib/orig/emacs-extention")
 
 
@@ -193,32 +187,6 @@
  )
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;
-;; shell-pop
-;;
-;; http://www.emacswiki.org/emacs/download/shell-pop.el
-;;
-(require 'shell-pop)
-(shell-pop-set-internal-mode "ansi-term")
-(shell-pop-set-internal-mode-shell "/bin/zsh")
-
-(defvar ansi-term-after-hook nil)
-(add-hook 'ansi-term-after-hook
-          '(lambda ()
-             (define-key term-raw-map "\C-c\C-t" 'shell-pop)
-             (hl-line-unhighlight)))
-(defadvice ansi-term (after ansi-term-after-advice (org))
-  "run hook as after advice"
-  (run-hooks 'ansi-term-after-hook))
-(ad-activate 'ansi-term)
-(global-set-key "\C-c\C-t" 'shell-pop)
-;; Besides, you can set the window height, the number for the percentage
-;; for selected window.
-(shell-pop-set-window-height 40)
-
-;;(setq system-uses-terminfo nil)
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;
 ;;;     utils
@@ -227,35 +195,35 @@
 
 
 
-;; Emacs でファイルをsudoで開き直す
-(defun file-root-p (filename)
-  "Return t if file FILENAME created by root."
-  (eq 0 (nth 2 (file-attributes filename))))
+;; ;; Emacs でファイルをsudoで開き直す
+;; (defun file-root-p (filename)
+;;   "Return t if file FILENAME created by root."
+;;   (eq 0 (nth 2 (file-attributes filename))))
 
-(defun th-rename-tramp-buffer ()
-  (when (file-remote-p (buffer-file-name))
-    (rename-buffer
-     (format "%s:%s"
-             (file-remote-p (buffer-file-name) 'method)
-             (buffer-name)))))
+;; (defun th-rename-tramp-buffer ()
+;;   (when (file-remote-p (buffer-file-name))
+;;     (rename-buffer
+;;      (format "%s:%s"
+;;              (file-remote-p (buffer-file-name) 'method)
+;;              (buffer-name)))))
 
-(add-hook 'find-file-hook
-          'th-rename-tramp-buffer)
+;; (add-hook 'find-file-hook
+;;           'th-rename-tramp-buffer)
 
-(defadvice find-file (around th-find-file activate)
-  "Open FILENAME using tramp's sudo method if it's read-only."
-  (if (and (file-root-p (ad-get-arg 0))
-           (not (file-writable-p (ad-get-arg 0)))
-           (y-or-n-p (concat "File "
-                             (ad-get-arg 0)
-                             " is read-only.  Open it as root? ")))
-      (th-find-file-sudo (ad-get-arg 0))
-    ad-do-it))
+;; (defadvice find-file (around th-find-file activate)
+;;   "Open FILENAME using tramp's sudo method if it's read-only."
+;;   (if (and (file-root-p (ad-get-arg 0))
+;;            (not (file-writable-p (ad-get-arg 0)))
+;;            (y-or-n-p (concat "File "
+;;                              (ad-get-arg 0)
+;;                              " is read-only.  Open it as root? ")))
+;;       (th-find-file-sudo (ad-get-arg 0))
+;;     ad-do-it))
 
-(defun th-find-file-sudo (file)
-  "Opens FILE with root privileges."
-  (interactive "F")
-  (set-buffer (find-file (concat "/sudo::" file))))
+;; (defun th-find-file-sudo (file)
+;;   "Opens FILE with root privileges."
+;;   (interactive "F")
+;;   (set-buffer (find-file (concat "/sudo::" file))))
 
 
 
@@ -266,10 +234,10 @@
 ;;;   git://github.com/fukamachi/redmine-el.git
 ;;
 ;; (add-to-list 'load-path "~/.emacs.d/site-lisp/redmine-el")
-(require 'redmine)
-(setq redmine-project-alist
-      '(("woman" "https://redmine.everyleaf.com/projects/show/woman-life" "eMpnO6r6MIbG0EybDDwgevniYLeAJPeUnjUUjRBe")
-        ("smalldesk" "https://redmine.everyleaf.com/projects/show/smalldesk")))
+;; (require 'redmine)
+;; (setq redmine-project-alist
+;;       '(("woman" "https://redmine.everyleaf.com/projects/show/woman-life" "eMpnO6r6MIbG0EybDDwgevniYLeAJPeUnjUUjRBe")
+;;         ("smalldesk" "https://redmine.everyleaf.com/projects/show/smalldesk")))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -717,6 +685,8 @@
 ;;; Emacs
 ;;
 ;; Get :
+;;
+;;  git clone git://git.savannah.gnu.org/emacs.git
 ;;
 ;;  ftp://ftp.twaren.net/Unix/GNU/gnu/emacs/
 ;;
