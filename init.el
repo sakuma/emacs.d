@@ -31,6 +31,17 @@
 
 ;;;;;;;;;;
 ;;
+;;  exec-path
+
+(defconst default-emacs-path (split-string (getenv "PATH") ":"))
+(defconst login-path (split-string (substring (shell-command-to-string "echo $PATH") 0 -1) ":"))
+(dolist (path login-path)
+  (unless (member path default-emacs-path)
+    (add-to-list 'exec-path path)))
+
+
+;;;;;;;;;;
+;;
 ;;  auto-install -- http://www.emacswiki.org/emacs/download/auto-install.el
 ;;
 (when (require 'auto-install nil t)
