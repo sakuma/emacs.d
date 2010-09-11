@@ -78,45 +78,33 @@
 ;;
 ;;
 
+(defconst common-frame-alist
+  '((foreground-color . "gray")
+    (background-color . "black")
+    (cursor-color . "blue")
+    (height . 100) ; Emacsがディスプレーの高さにあわせてくれるため、大きい数字を与えておく
+    (top    . 0)
+    (alpha  . (85 70)))) ; 透明度 (active inactive)
+
+(defconst macbook-config '((width . 170) (left  . 50)))
+(defconst imac-config '((width . 245) (left  . 165)))
+
 ;; initial-frame-alist
-(setq initial-frame-alist
-      '((foreground-color . "gray")
-        (background-color . "black")
-        (cursor-color . "blue")
-        (height . 100) ; Emacsがディスプレーの高さにあわせてくれるため、大きい数字を与えておく
-        (top    . 0)
-        (alpha  . (85 70)))) ; 透明度 (active inactive)
-;; 環境毎の設定
-(let ((sys system-name))
-  (cond ((or (string= sys "macbook.lan")
-             (string= sys "MacBook.local"))
-         (progn
-           (add-to-list 'initial-frame-alist '(width . 170))
-           (add-to-list 'initial-frame-alist '(left  . 50))))
-        ((string= system-name "imac.lan")
-         (progn
-           (add-to-list 'initial-frame-alist '(width . 245))
-           (add-to-list 'initial-frame-alist '(left  . 165))))))
+(setq initial-frame-alist common-frame-alist)
 
 ;; default-frame-alist
-(setq default-frame-alist
-      '((foreground-color . "gray")
-        (background-color . "black")
-        (cursor-color . "blue")
-        (height . 100) ; Emacsがディスプレーの高さにあわせてくれるため、大きい数字を与えておく
-        (top    . 0)
-        (alpha  . (85 70))))
+(setq default-frame-alist common-frame-alist)
+
 ;; 環境毎の設定
 (let ((sys system-name))
-  (cond ((or (string= sys "macbook.lan")
-             (string= sys "MacBook.local"))
+  (cond ((member sys '("macbook.lan" "MacBook.local"))
          (progn
-           (add-to-list 'default-frame-alist '(width . 170))
-           (add-to-list 'default-frame-alist '(left  . 50))))
-        ((string= system-name "imac.lan")
+           (setq initial-frame-alist (append initial-frame-alist macbook-config))
+           (setq default-frame-alist (append default-frame-alist macbook-config))))
+        ((member sys '("imac.lan" "iMac.local"))
          (progn
-           (add-to-list 'default-frame-alist '(width . 245))
-           (add-to-list 'default-frame-alist '(left  . 165))))))
+           (setq initial-frame-alist (append initial-frame-alist imac-config))
+           (setq default-frame-alist (append default-frame-alist imac-config))))))
 
 
 ;;; カーソルの点滅を止める
