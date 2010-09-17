@@ -384,3 +384,12 @@
 (require 'redo+)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;     ediff (同梱)
+;;
+;; 別ウィンドウを表示させない
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
+;; 変更箇所のハイライト表示のリミット設定 10000byte (デフォルトは 1400)
+(setq-default ediff-auto-refine-limit 10000)
