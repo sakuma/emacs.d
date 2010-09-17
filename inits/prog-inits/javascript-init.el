@@ -41,6 +41,7 @@
 (autoload 'espresso-mode "espresso")
 
 
+(defconst *indent-conf* 4)
 
 (defun my-js2-indent-function ()
   (interactive)
@@ -57,7 +58,7 @@
         ;; I like to indent case and labels to half of the tab width
         (back-to-indentation)
         (if (looking-at "case\\s-")
-            (setq indentation (+ indentation (/ espresso-indent-level 2))))
+            (setq indentation (+ indentation (/ espresso-indent-level *indent-conf*))))
 
         ;; consecutive declarations in a var statement are nice if
         ;; properly aligned, i.e:
@@ -99,9 +100,9 @@
 
 (defun my-js2-mode-hook ()
   (require 'espresso)
-  (setq espresso-indent-level 2
+  (setq espresso-indent-level *indent-conf*
         indent-tabs-mode nil
-        c-basic-offset 2)
+        c-basic-offset *indent-conf*)
   (c-toggle-auto-state 0)
   (c-toggle-hungry-state 1)
   (set (make-local-variable 'indent-line-function) 'my-js2-indent-function)
